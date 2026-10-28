@@ -25,13 +25,25 @@
 | FR-10 | The system shall submit payment to an external or simulated payment service. | Customer, Marketplace Operator, Payment Service | Payment Processing | Send a payment request to the selected test service. | High | Payment is submitted to an external or simulated service. |
 | FR-11 | The system shall confirm the order when payment succeeds. | Customer, Producer, Marketplace Operator | Order Confirmation | Treat the order as confirmed after receiving a successful payment result. | High | Successful payment leads to order confirmation. |
 | FR-12 | The system shall inform the customer when payment is declined. | Customer | Payment Exception Handling | Show that the payment was declined. | High | A customer whose payment is declined must be informed. |
-| FR-13  | The system shall allow the customer to retry a declined payment. | Customer, Payment Service | Payment Exception Handling | Give the customer an opportunity to submit payment again. | High | The customer is given an opportunity to retry. |
+| FR-13 | The system shall allow the customer to retry a declined payment. | Customer, Payment Service | Payment Exception Handling | Give the customer an opportunity to submit payment again. | High | The customer is given an opportunity to retry. |
 | FR-14 | The system shall handle temporary payment-service unavailability through an exception or retry path. | Customer, Marketplace Operator, Payment Service | Payment Exception Handling | Follow a defined recovery path instead of simply ending the process. The exact policy needs agreement. | High | Temporary service unavailability must follow an appropriate exception or retry path. |
 | FR-15 | The system shall update the relevant inventory quantities after successful payment. | Producer, Marketplace Operator | Inventory Management | Reduce stock by the quantities purchased in the successful order. | High | Appropriate inventory quantities are updated after successful payment. |
 | FR-16 | The system shall notify the relevant producers after successful payment. | Producer, Marketplace Operator | Producer Notification | Notify the producers involved in the confirmed order. | High | Relevant producers are notified after successful payment. |
 | FR-17 | The system shall calculate the order amount attributable to each producer. | Producer, Marketplace Operator | Order Financial Calculation | Calculate each producer’s amount from their part of the multi-vendor order. Treatment of deductions needs clarification. | High | Case 2 requires an amount attributable to each producer. |
 | FR-18 | The system shall calculate the marketplace’s 5% commission. | Marketplace Operator, Producer | Order Financial Calculation | Calculate commission using the stated 5% rate. The calculation base and rounding rules need clarification. | High | Case 2 explicitly states a 5% marketplace commission. |
 | FR-19 | The project shall use a sandbox or simulated payment service. | Customer, Marketplace Operator, Payment Service | Payment Processing | Demonstrate payments using a test service, without live payments or real financial data. | High | Case 2 requires sandbox/simulated payments; the wider case study prohibits live payment systems and real financial data. |
+
+
+| ID | Requirement | What the System Should Do | Source |
+| --- | --- | --- | --- |
+| NFR-01 | Security and privacy | Keep customer, order and payment details safe. Only people with permission should see them. | The case study requires safe payments and protection of personal data. |
+| NFR-02 | Easy to use | Make it easy for customers to check their basket, confirm an order and pay. | The case study asks for a smooth checkout. |
+| NFR-03 | Clear information | Clearly show stock problems, delivery or collection details, and payment results. | Case 2 requires this information for customers. |
+| NFR-04 | Reliable operation | Handle a payment service problem through an error or retry path. Do not simply end the process. | Case 2 requires a way to handle temporary payment service problems. |
+| NFR-05 | Correct data | Keep the main order, each producer's part of the order and stock levels consistent. | This quality requirement comes from the order and stock tasks in Case 2. |
+| NFR-06 | Correct calculations | Calculate each producer's amount and the marketplace's 5% commission correctly. The group must agree the calculation and rounding rules. | Case 2 requires these calculations. |
+| NFR-07 | Easy to maintain | Keep process files, forms and code organised. Include clear setup instructions. | This is a proposed quality requirement based on the assessment's project setup and repository needs. |
+
 
 3. Dependencies
 
@@ -41,9 +53,9 @@
 | D-02 | Customer | Marketplace Operator | Goal | An order containing products that are available in the requested quantities. | The system checks availability and quantities at checkout. |
 | D-03 | Customer | Marketplace Operator | Resource | Delivery or collection details for the order. | The system determines the relevant arrangements before customer confirmation. |
 | D-04 | Marketplace Operator | Customer | Task | Review the order and confirm the purchase. | The customer reviews and confirms before the order is created. |
-| D-05 | Marketplace Operator | External/Simulated Payment Service | Task | Process the submitted payment. | Payment is submitted to the simulated service. |
-| D-06  | Marketplace Operator | Simulated Payment Service | Resource | Payment result. | The system follows different paths for successful and declined payments. |
-| D-07 | Customer | Marketplace Operator| Resource | Information that payment was declined and an opportunity to retry. | The customer must be informed and allowed to retry. |
+| D-05 | Marketplace Operator | External/Simulated Payment Service | Task | Process the submitted payment. | Payment is submitted to an external or simulated service. |
+| D-06 | Marketplace Operator | External/Simulated Payment Service | Resource | Payment result. | The system follows different paths for successful and declined payments. |
+| D-07 | Customer | Marketplace Operator | Resource | Information that payment was declined and an opportunity to retry. | The customer must be informed and allowed to retry. |
 | D-08 | Producer | Marketplace Operator | Resource | Notification of their part of a confirmed order. | The system splits the order and notifies the relevant producers after successful payment. |
 | D-09 | Producer | Marketplace Operator | Goal | Their share of the order amount is calculated correctly. | Case 2 requires an amount attributable to each producer. |
 | D-10 | Marketplace Operator | Producer | Resource | Accurate product availability and stock information. | Checkout requires stock information. Producer responsibility for maintaining it comes from the wider case study. |
