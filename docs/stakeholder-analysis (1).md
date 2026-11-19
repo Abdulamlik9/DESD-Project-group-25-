@@ -1,6 +1,6 @@
 **Stakeholder Analysis – Use Case 2: Customer Multi-Vendor Order, Checkout and Payment**
 
-1. 
+## 1. Stakeholder Goals
 
 | Stakeholder | Goals | Responsibilities | Dependencies |
 | ----- | ----- | ----- | ----- |
@@ -9,7 +9,7 @@
 | **Market Owner / Network Operator** | Operate a reliable marketplace, support successful multi-vendor purchases and collect the network’s 5% commission. | Oversee marketplace operations, establish delivery and collection arrangements with producers, and ensure the system correctly splits orders, calculates producer amounts and commission, and maintains transaction records. | Depends on producers for accurate availability and fulfilment; customers for order information and payment; and the payment service for transaction results. |
 | **Payment Service Provider** | Process valid payment requests securely and return clear, accurate transaction results. | Process payment requests, return success or declined results and transaction references, and communicate processing errors where possible. A sandbox or simulated service is used for this project. | Depends on the marketplace system for the correct payment amount, order reference and required payment information, and on the customer for valid test payment details or authorisation. |
 
-2. Requirements
+## 2. Requirements
 
 | Requirement ID | Functional Requirement | Relevant Stakeholder(s) | Related Business Process | Expected System Behaviour | Priority | Case Study Evidence |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
@@ -45,7 +45,7 @@
 | NFR-07 | Easy to maintain | Keep process files, forms and code organised. Include clear setup instructions. | This is a proposed quality requirement based on the assessment's project setup and repository needs. |
 
 
-3. Dependencies
+## 3. Stakeholder Dependencies
 
 | Dependency ID | Depender | Dependee | Dependency Type | Dependency Description | Justification from Case 2 |
 | ----- | ----- | ----- | ----- | ----- | ----- |
@@ -61,4 +61,11 @@
 | D-10 | Marketplace Operator | Producer | Resource | Accurate product availability and stock information. | Checkout requires stock information. Producer responsibility for maintaining it comes from the wider case study. |
 | D-11 | Customer | Marketplace Operator | Softgoal | A clear and easy checkout experience. | The wider case study asks for seamless checkout and clear supplier and delivery information. This is a quality interpretation, not a measured acceptance rule. |
 
-4. 
+
+## 4. Requirements Traceability
+
+| Stakeholder Goal | Functional Requirement | Strategic BPMN | Operational BPMN |
+| --- | --- | --- | --- |
+| Customer purchases available products from multiple producers in one checkout, with clear delivery or collection arrangements. | FR-07 — Allow the customer to review the order and confirm the purchase. | `Checkout` in Strategic BPMN - 2 simplified. | `review basket` for reviewing the basket, then `confirm total: enter payment` for confirming the total before `submit payment`. |
+
+The activity names above are from the BPMN diagrams. Camunda Form binding and runtime testing are pending verification.
